@@ -1,10 +1,6 @@
 package org.dimitrovchi.confluentui.common
 
-trait CloseableModule extends AutoCloseable {
+trait CloseableModule {
 
   protected implicit val closer: ModuleCloser = new ModuleCloser
-
-  override def close(): Unit = {
-    closer.close()
-  }
 }

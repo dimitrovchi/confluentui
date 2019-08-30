@@ -1,8 +1,10 @@
 package org.dimitrovchi.confluentui.common
 
+import com.typesafe.scalalogging.LazyLogging
+
 import scala.collection.mutable
 
-final class ModuleCloser extends AutoCloseable {
+final class ModuleCloser extends AutoCloseable with LazyLogging {
 
   private val closeables = new mutable.ArrayDeque[AutoCloseable]()
 
@@ -11,6 +13,7 @@ final class ModuleCloser extends AutoCloseable {
   }
 
   override def close(): Unit = {
+    logger.info("Closing {}", this)
     var exception: Throwable = null
     for (closeable <- closeables.reverseIterator) {
       try {
@@ -25,7 +28,7 @@ final class ModuleCloser extends AutoCloseable {
       }
     }
     if (exception != null) {
-      throw exception
+      logger.warn("An exception occurred", exception)
     }
   }
 }
