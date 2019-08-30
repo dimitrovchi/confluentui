@@ -13,16 +13,13 @@ class AppFrame(
   implicit val projectTabs: ProjectTabs,
   implicit val moduleCloser: ModuleCloser
 ) extends JFrame {
-  {
-    setTitle("Confluent UI")
-    setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE)
 
-    add(projectTabs, BorderLayout.CENTER)
-
-    setPreferredSize((800, 600))
-    pack()
-    setLocationRelativeTo(null)
-  }
+  setTitle("Confluent UI")
+  setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE)
+  add(projectTabs, BorderLayout.CENTER)
+  setPreferredSize((800, 600))
+  pack()
+  setLocationRelativeTo(null)
 
   override def processWindowEvent(e: WindowEvent): Unit = {
     super.processWindowEvent(e)
