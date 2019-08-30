@@ -9,8 +9,7 @@ import org.dimitrovchi.confluentui.ui.tabbed.ProjectTabs
 
 import scala.swing.Swing._
 
-class AppFrame
-(
+class AppFrame(
   implicit val projectTabs: ProjectTabs,
   implicit val moduleCloser: ModuleCloser
 ) extends JFrame {
