@@ -12,4 +12,7 @@ object Configuration {
   val uiHomeProjects = new File(uiHome, "projects")
 
   uiHomeProjects.mkdir()
+
+  val ver = "http://packages.confluent.io/archive/5.3/confluent-5.3.0-2.12.zip"
+
 }
