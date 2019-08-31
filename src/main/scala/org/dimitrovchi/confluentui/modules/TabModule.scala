@@ -1,6 +1,6 @@
 package org.dimitrovchi.confluentui.modules
 
-import org.dimitrovchi.confluentui.ui.Dashboard
+import org.dimitrovchi.confluentui.ui.project.Dashboard
 
 trait TabModule {
 

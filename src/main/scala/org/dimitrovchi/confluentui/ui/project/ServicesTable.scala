@@ -1,4 +1,4 @@
-package org.dimitrovchi.confluentui.ui
+package org.dimitrovchi.confluentui.ui.project
 
 import javax.swing.JTable
 
