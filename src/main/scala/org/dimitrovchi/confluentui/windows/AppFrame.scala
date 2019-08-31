@@ -5,19 +5,23 @@ import java.awt.event.WindowEvent
 
 import javax.swing.{JFrame, WindowConstants}
 import org.dimitrovchi.confluentui.common.ModuleCloser
+import org.dimitrovchi.confluentui.common.Swingers._
 import org.dimitrovchi.confluentui.ui.tabbed.ProjectTabs
-
-import scala.swing.Swing._
+import org.dimitrovchi.confluentui.ui.{MainMenu, StatusBar}
 
 class AppFrame(
+  implicit val mainMenu: MainMenu,
   implicit val projectTabs: ProjectTabs,
+  implicit val statusBar: StatusBar,
   implicit val moduleCloser: ModuleCloser
 ) extends JFrame {
 
   setTitle("Confluent UI")
+  setJMenuBar(mainMenu)
   setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE)
   add(projectTabs, BorderLayout.CENTER)
-  setPreferredSize((800, 600))
+  add(statusBar, BorderLayout.SOUTH)
+  setPreferredSize((1024, 768))
   pack()
   setLocationRelativeTo(null)
 

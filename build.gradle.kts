@@ -12,8 +12,7 @@ repositories {
 }
 
 dependencies {
-    implementation("org.scala-lang.modules:scala-swing_2.13:2.1.1")
-    implementation("org.scala-lang.modules:scala-java8-compat_2.13:0.9.0")
+    implementation("org.scala-lang:scala-library:2.13.0")
     implementation("org.scala-lang.modules:scala-async_2.13:0.10.0")
     implementation("org.ekrich:sconfig_2.13:1.0.0")
     implementation("com.typesafe.scala-logging:scala-logging_2.13:3.9.2")
