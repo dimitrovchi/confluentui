@@ -1,7 +1,10 @@
+import org.openjfx.gradle.JavaFXOptions
+
 plugins {
     scala
     application
 
+    id("org.openjfx.javafxplugin").version("0.0.8")
     id("com.github.maiflai.scalatest").version("0.25")
 }
 
@@ -38,6 +41,11 @@ configure<JavaPluginConvention> {
 
 configure<ApplicationPluginConvention> {
     mainClassName = "org.dimitrovchi.confluentui.Launch"
+}
+
+configure<JavaFXOptions> {
+    version = "12.0.2"
+    modules = listOf("javafx.controls")
 }
 
 tasks {
