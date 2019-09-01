@@ -1,5 +1,6 @@
 plugins {
     scala
+    application
 
     id("com.github.maiflai.scalatest").version("0.25")
 }
@@ -23,11 +24,31 @@ dependencies {
     testImplementation("org.pegdown:pegdown:1.6.0")
 }
 
+configurations.all {
+    resolutionStrategy.eachDependency {
+        if (requested.group == "org.parboiled" && requested.name == "parboiled-java") {
+            useVersion("1.3.1")
+        }
+    }
+}
+
 configure<JavaPluginConvention> {
-    sourceCompatibility = JavaVersion.VERSION_1_8
+    sourceCompatibility = JavaVersion.VERSION_12
+}
+
+configure<ApplicationPluginConvention> {
+    mainClassName = "org.dimitrovchi.confluentui.Launch"
 }
 
 tasks {
-    "jar"(Jar::class) {
+    "compileScala"(ScalaCompile::class) {
+        targetCompatibility = JavaVersion.VERSION_12.majorVersion
+    }
+
+    "test"(Test::class) {
+        jvmArgs = listOf(
+                "--illegal-access=warn",
+                "--add-opens=java.base/java.lang=ALL-UNNAMED"
+        )
     }
 }
